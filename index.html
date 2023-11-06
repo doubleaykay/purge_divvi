@@ -1,230 +1,314 @@
 <!DOCTYPE html>
 <head>
-    <!-- <meta name="viewport" content="width-device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width-device-width, initial-scale=1">
     <title>Divvi</title>
-    <link href="./resources/css/post.css" type="text/css" rel="stylesheet">
+    <link href="bulma.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body class="m-5">
-    <h1 class="text-2xl font-medium mb-5">Divvi Build 2023-11-03 11:11</h1>
-    <form class="space-y-8">
-        <!-- card -->
-        <div class="bg-gray-100 rounded-md drop-shadow-md">
-            <!-- collection of people -->
-            <ul class="divide-y-2 divide-gray-300">
+    <script src="https://kit.fontawesome.com/33da0f5282.js" crossorigin="anonymous"></script>
+    <h1 class="title">Divvi Build 2023-11-06 15:13</h1>
+    <form class="container is-max-desktop mb-6">
+        <div class="card has-background-white">
+            <!-- people -->
+            <div class="card-content pb-0">
                 <!-- all fields for one person -->
-                <li class="p-5 space-y-5">
+                <div class="">
+                    <button type="button" id="delete-person0" aria-label="Delete" class="button is-danger is-pulled-right">
+                        <span class="icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </button>
                     <!-- name row -->
-                    <div class="space-y-2">
-                        <div class="flex items-end">
-                            <label for="name-0" class="flex-grow font-medium text-sm">
+                    <div class="field columns is-mobile">
+                        <div class="column is-three-quarters p-0">
+                            <label for="name-0" class="label">
                                 Name
                             </label>
-                            <button type="button" id="del-0" aria-label="Remove" class="text-red-600">
-                                <i class="bi bi-trash3"></i>
-                            </button>
+                            <input id="name-0" type="text" placeholder="John Doe" class="input">
                         </div>
-                        <input id="name-0" type="text" placeholder="John Doe" class="shadow-sm rounded-md">
                     </div>
                     <!-- personal subtotal & rounding row -->
-                    <!-- personal subtotal field -->
-                    <div class="space-y-2">
-                        <label for="sub-0" class="font-medium text-sm mt-5">
+                    <div class="field">
+                        <label for="personal-subtotal-0" class="label">
                             Personal Subtotal
                         </label>
-                        <div class="flex items-center">
-                            <div class="flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
-                                <span class="select-none text-gray-500">$</span>
-                                <input id="sub-0" type="number" placeholder="0.00" class="w-full text-right border-0 bg-transparent focus:ring-0  ml-1 px-0">
+                        <div class="columns is-mobile is-align-items-center">
+                            <!-- personal subtotal field -->
+                            <div class="column is-half">
+                                <div class="control has-icons-left">
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-dollar"></i>
+                                    </span>
+                                    <!-- Currency inputs need some reformatting via JS, e.g. to turn 3 into 3.00 -->
+                                    <input id="personal-subtotal-0" type="number" inputmode="decimal" min="0.00" step="0.00" placeholder="0.00" class="input">
+                                </div>
                             </div>
-                            <!-- rounding field -->
-                            <input id="round-0" type="checkbox" class="rounded-sm justify-self-end ml-5 mr-2">
-                            <label for="round-0" class="font-normal text-sm whitespace-nowrap">
-                                Pay in whole dollars
+                            <div class="column">
+                                <!-- rounding field -->
+                                <div class="columns is-mobile is-align-items-center is-gapless">
+                                    <div class="column is-narrow mr-2">
+                                        <input id="round-contrib-0" type="checkbox">
+                                    </div>
+                                    <div class="column">
+                                        <label for="round-contrib-0" class="checkbox">
+                                            Pay in whole dollars
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- all fields for one person -->
+                <div class="">
+                    <button type="button" id="delete-person1" aria-label="Delete" class="button is-danger is-pulled-right">
+                        <span class="icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </button>
+                    <!-- name row -->
+                    <div class="field columns is-mobile">
+                        <div class="column is-three-quarters p-0">
+                            <label for="name-1" class="label">
+                                Name
+                            </label>
+                            <input id="name-1" type="text" placeholder="John Doe" class="input">
+                        </div>
+                    </div>
+                    <!-- personal subtotal & rounding row -->
+                    <div class="field">
+                        <label for="personal-subtotal-1" class="label">
+                            Personal Subtotal
+                        </label>
+                        <div class="columns is-mobile is-align-items-center">
+                            <!-- personal subtotal field -->
+                            <div class="column is-half">
+                                <div class="control has-icons-left">
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-dollar"></i>
+                                    </span>
+                                    <!-- Currency inputs need some reformatting via JS, e.g. to turn 3 into 3.00 -->
+                                    <input id="personal-subtotal-1" type="number" inputmode="decimal" min="0.00" step="0.00" placeholder="0.00" class="input">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="columns is-mobile is-align-items-center is-gapless">
+                                    <div class="column is-narrow mr-2">
+                                        <input id="round-contrib-1" type="checkbox">
+                                    </div>
+                                    <div class="column">
+                                        <label for="round-contrib-1" class="checkbox">
+                                            Pay in whole dollars
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- add person -->
+                <button type="button" id="add-person" aria-label="Delete" class="button is-primary">
+                    <span class="icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </span>
+                    <span>Add person</span>
+                </button>
+            </div>
+            <hr>
+            <!-- bill-wide fields -->
+            <div class="card-content pt-0">
+                <!-- tax -->
+                <div class="block">
+                    <label for="tax" class="label">
+                        Tax
+                    </label>
+                    <div class="control has-icons-left">
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-dollar"></i>
+                        </span>
+                        <!-- Currency inputs need some reformatting via JS, e.g. to turn 3 into 3.00 -->
+                        <input id="tax" type="number" inputmode="decimal" min="0.00" step="0.00" placeholder="0.00" class="input">
+                    </div>
+                </div>
+                <!-- tip rows -->
+                <div class="block">
+                    <label for="tip-type" class="label">
+                        Tip
+                    </label>
+                    <div class="columns is-mobile is-gapless is-align-items-center mb-3">
+                        <div class="column is-narrow">
+                            <label for="tip-type" class="pr-2">
+                                Tip by
                             </label>
                         </div>
-                    </div>
-                </li>
-                <!-- all fields for one person -->
-                <li class="grid grid-cols-1 gap-y-5 items-center p-5">
-                    <!-- name row -->
-                    <div class=" grid grid-cols-6 gap-y-2 items-end">
-                        <label for="name-1" class="col-span-5 font-medium text-sm">
-                            Name
-                        </label>
-                        <button type="button" id="del-1" aria-label="Remove" class="place-self-end text-red-600">
-                            <i class="bi bi-trash3"></i>
-                        </button>
-                        <input id="name-1" type="text" placeholder="John Doe" class="col-span-6 shadow-sm rounded-md">
-                    </div>
-                    <!-- personal subtotal & rounding row -->
-                    <div class="grid grid-cols-6 gap-y-2 items-center">
-                        <!-- personal subtotal field -->
-                        <label for="sub-1" class="font-medium text-sm col-span-6">
-                            Personal Subtotal
-                        </label>
-                        <div class="col-span-2 flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
-                            <span class="select-none text-gray-500">$</span>
-                            <input id="sub-1" type="number" placeholder="0.00" class="w-full text-right border-0 bg-transparent focus:ring-0  ml-1 px-0">
+                        <!-- tip type selection field -->
+                        <div class="column">
+                            <div class="select is-pulled-right">
+                                <select name="tip-type" class="">
+                                    <option value="PreTaxPct">% of subtotal</option>
+                                    <option value="PostTaxPct">% of subtotal (after tax)</option>
+                                    <option value="TipDollars">flat tip $</option>
+                                    <option value="TotalDollars">desired total $, incl. tip</option>
+                                </select>
+                            </div>
                         </div>
-                        <!-- rounding field -->
-                        <input id="round-1" type="checkbox" class="rounded-sm justify-self-end mr-2">
-                        <label for="round-1" class="col-span-3 font-medium text-sm">
-                            Pay in whole dollars
-                        </label>
                     </div>
-                </li>
-                <!-- add person -->
-                <li class="p-5">
-                    <div  class="flex items-center">
-                        <button type="button" id="add-person" aria-label="Add person" class="rounded-md py-2 px-8 bg-emerald-600 text-white">
-                            <i class="bi bi-person-add"></i>
-                        </button>
+                    <!-- Showing fields for both options ($ or %) right now. Could hide one
+                    as needed, preserving the distinction that the back end currently uses
+                    in its data model. Alternatively, could just show/hide the symbols for
+                    a single box that does double duty. But that requires conditional validation -->
+                    <!-- $ tip field -->
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-dollar"></i>
+                            </span>
+                            <!-- Currency inputs need some reformatting via JS, e.g. to turn 3 into 3.00 -->
+                            <input id="tip-dollars" type="number" inputmode="decimal" min="0.00" step="0.00" placeholder="0.00" class="input">
+                        </div>
                     </div>
-                </li>
-            </ul>
-        </div>
-        <!-- tax and tip fields -->
-        <div class="space-y-5">
-            <!-- tax row -->
-            <div class="space-y-2">
-                <label for="tax" class="font-medium text-sm">
-                    Tax
-                </label>
-                <div class="flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
-                    <span class="select-none text-gray-500">$</span>
-                    <input id="tax" type="number" placeholder="0.00" class="w-full flex-grow text-right border-0 bg-transparent focus:ring-0 ml-1 px-0">
+                    <!-- tip % field -->
+                    <div class="field">
+                        <div class="control has-icons-right">
+                            <span class="icon is-small is-right">
+                                <i class="fa-solid fa-percent"></i>
+                            </span>
+                            <input id="tip-pct" type="number" inputmode="numeric" min="0" placeholder="20" class="input">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!-- tip row -->
-            <div class="space-y-2">
-                <div class="flex items-center gap-x-2">
-                    <label for="tip-type" class="font-medium text-sm">
-                        Tip by
-                    </label>
-                    <select name="tip-type" class="rounded-sm font-normal text-sm">
-                        <option value="PreTaxPct">percentage of subtotal</option>
-                        <option value="PostTaxPct">percentage of subtotal and tax</option>
-                        <option value="TipDollars">flat tip amount</option>
-                        <option value="TotalDollars">desired total, including tax and tip</option>
-                    </select>
-                </div>
-                <!-- Showing fields for both options ($ or %) right now. Could hide one
-                        as needed, preserving the distinction that the back end currently uses
-                        in its data model. Alternatively, could just show/hide the symbols for
-                        a single box that does double duty. -->
-                <div class="col-span-2 flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
-                    <span class="select-none text-gray-500">$</span>
-                    <input id="tip-amt" type="number" placeholder="0.00" class="w-full flex-grow text-right border-0 bg-transparent focus:ring-0 ml-1 px-0">
-                </div>
-                <div class="col-span-2 flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
-                    <input id="tip-pct" type="number" placeholder="20" class="w-full flex-grow text-right border-0 bg-transparent focus:ring-0 ml-1 px-0">
-                    <span class="select-none text-gray-500">%</span>
+                <div class="block">
+                    <button type="submit" class="button is-primary is-medium">
+                        Calculate
+                    </button>
                 </div>
             </div>
         </div>
-        <button type="submit" id="calculate" class="bg-emerald-600 rounded-md py-2 px-4">
-            <span class="text-white">Calculate</span>
-        </button>
-        <!--
-        <ul>
-            <li>
-                <label for="tip-type">Tip by</label>
-                <select name="tip-type">
-                    <option value="PreTaxPct">percentage of subtotal</option>
-                    <option value="PostTaxPct">percentage of total, including tax</option>
-                    <option value="TipDollars">flat tip amount</option>
-                    <option value="TotalDollars">desired total, including tax and tip</option>
-                </select>:
-                <label for="tip-amt">[Label depends on selection]</label>
-                <input name="tip-amt" type="number">
-            </li>
-        </ul> -->
     </form>
+
     <!-- results card -->
-    <div class="receipt bg-gray-100 rounded-md drop-shadow-md my-5 relative">
-        <div class="divide-y-2 divide-gray-300">
+    <div class="container is-max-desktop">
+        <div class="card has-background-white">
             <!-- summary section -->
-            <div>
-                <h2 class="text-lg font-medium pl-5 pt-5">Bill Summary</h2>
-                <div class="divide-y divide-gray-300 px-5">
-                    <!-- subtotal -->
-                    <div class="flex py-4">
-                        <div class="flex-grow">Subtotal:</div>
-                        <div class="text-right pr-12">$38.94</div>
-                    </div>
-                    <!-- tax -->
-                    <div class="flex py-4">
-                        <div class="flex-grow">Tax:</div>
-                        <div class="text-right pr-12">$2.33</div>
-                    </div>
-                    <!-- tip -->
-                    <div class="flex font-semibold py-4">
-                        <div class="flex-grow">Tip:</div>
-                        <div class="text-right pr-12">$7.79</div>
-                    </div>
-                    <!-- total -->
-                    <div class="flex font-semibold py-4">
-                        <div class="flex-grow">Total:</div>
-                        <div class="text-right pr-12">$49.06</div>
-                    </div>
+            <div class="card-content pb-0">
+                <h2 class="title is-4">Bill Summary</h2>
+                <!-- subtotal -->
+                <div class="columns is-mobile my-0">
+                    <div class="column">Subtotal:</div>
+                    <div class="column is-narrow">$38.94</div>
+                    <div class="column is-one-quarter"></div>
+                </div>
+                <hr class="my-0">
+                <!-- tax -->
+                <div class="columns is-mobile my-0">
+                    <div class="column">Tax:</div>
+                    <div class="column is-narrow">$2.33</div>
+                    <div class="column is-one-quarter"></div>
+                </div>
+                <hr class="my-0">
+                <!-- tip -->
+                <div class="columns is-mobile my-0">
+                    <div class="column">Tip:</div>
+                    <div class="column is-narrow">$7.79</div>
+                    <div class="column is-one-quarter"></div>
+                </div>
+                <hr class="my-0">
+                <!-- total -->
+                <div class="columns is-mobile my-0">
+                    <div class="column">Total:</div>
+                    <div class="column is-narrow">$49.06</div>
+                    <div class="column is-one-quarter"></div>
                 </div>
             </div>
+            <hr class="my-0">
             <!-- contributions section -->
-            <div>
-                <h2 class="text-lg font-medium pl-5 pt-5">Contributions</h2>
-                <div class="divide-y divide-gray-300 px-5">
-                    <!-- row -->
-                    <div class="flex gap-8 py-4">
-                        <div class="flex-grow">Anoush</div>
-                        <div class="text-right">$16.53</div>
-                        <button type="button" aria-label="Share" class="justify-self-end">
-                            <i class="bi bi-send"></i>
+            <div class="card-content">
+                <h2 class="title is-4">Contributions</h2>
+                <!-- row -->
+                <div class="columns is-mobile is-vcentered my-0">
+                    <div class="column">Anoush</div>
+                    <div class="column is-narrow">$16.53</div>
+                    <div class="column is-one-quarter has-text-centered py-0">
+                        <button type="button" aria-label="Share" class="button is-link is-outlined">
+                            <span class="icon">
+                                <i class="fa fa-share"></i>
+                            </span>
                         </button>
                     </div>
-                    <!-- row -->
-                    <div class="flex gap-8 py-4">
-                        <div class="flex-grow">Charlie</div>
-                        <div class="text-right">$16.00</div>
-                        <button type="button" aria-label="Share" class="justify-self-end">
-                            <i class="bi bi-send"></i>
+                </div>
+                <hr class="my-0">
+                <!-- row -->
+                <div class="columns is-mobile is-vcentered my-0">
+                    <div class="column">Charlie</div>
+                    <div class="column is-narrow">$16.00</div>
+                    <div class="column is-one-quarter has-text-centered py-0">
+                        <button type="button" aria-label="Share" class="button is-link is-outlined">
+                            <span class="icon">
+                                <i class="fa fa-share"></i>
+                            </span>
                         </button>
                     </div>
-                    <!-- row -->
-                    <div class="flex gap-8 py-4">
-                        <div class="flex-grow">Dan</div>
-                        <div class="text-right">$126.53</div>
-                        <button type="button" aria-label="Share" class="justify-self-end">
-                            <i class="bi bi-send"></i>
+                </div>
+                <hr class="my-0">
+                <!-- row -->
+                <div class="columns is-mobile is-vcentered my-0">
+                    <div class="column">Dan</div>
+                    <div class="column is-narrow">$126.53</div>
+                    <div class="column is-one-quarter has-text-centered py-0">
+                        <button type="button" aria-label="Share" class="button is-link is-outlined">
+                            <span class="icon">
+                                <i class="fa fa-share"></i>
+                            </span>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- modal, to be cut and pasted into relevant context -->
-    <!-- in prod, remove `open` attribute -->
-    <dialog class="" open>
-        <div class="bg-gray-100 rounded-md drop-shadow-md py-2 px-2 my-5 mx-2">
-            <div class="flex justify-end px-2">
-                <button type="button" aria-label="Copy to clipboard" class="">
-                    <i class="bi bi-copy"></i>
-                </button>
-            </div>
-            <div class="bg-white rounded-sm my-2 py-1 px-2">
-                <p class="font-mono">Dan owes $16.53 for the shared meal on 10/27/2023.</p>
-            </div>
-            <div class="flex justify-end gap-8 px-2">
-                <button type="button" aria-label="Venmo" class="">
-                    <i class="bi bi-phone"></i>
-                </button>
-                <button type="button" aria-label="More...">
-                    <i class="bi bi-three-dots"></i>
-                </button>
+
+    <!-- Modal -->
+    <!-- To show as a test, change class to "modal is-active" -->
+    <!-- For sample JS, see https://bulma.io/documentation/components/modal/#javascript-implementation-example -->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="card has-background-white-ter mx-2">
+                <div class="card-body">
+                    <div class="card-content">
+                        <div class="box is-shadowless pr-2 pt-2">
+                            <span class="icon is-clickable has-text-grey is-pulled-right">
+                                <i class="fa-regular fa-lg fa-copy"></i>
+                            </span>
+                            <p class="is-family-monospace pt-3">
+                                Dan owes $126.53 for the shared meal on 10/27/2023.
+                            </p>
+                        </div>
+                        <div class="columns is-mobile">
+                            <div class="column is-2 is-offset-8 has-text-centered">
+                                <button type="button" aria-label="Venmo" class="button is-link is-outlined">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-dollar-sign"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="column is-2 has-text-centered">
+                                <button type="button" aria-label="More..." class="button is-link is-outlined">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </dialog>
+        <button class="modal-close is-large" type="button" aria-label="close"></button>
+    </div>
 </body>
