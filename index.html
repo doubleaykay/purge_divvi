@@ -1,12 +1,30 @@
 <!-- 
 Todo:
-    - Responsive design for better tablet/desktop experience
-    - Hover state styling
-    - Clicked state styling
-    - Validation state styling
-    - Do not clear fields on submit
-    - Venmo icon
-    - Brand color/font
+    - [ ] Responsive design for better tablet/desktop experience
+    - [X] Extract repeated styles for fields
+    - [ ] State styling
+        - [X] Hover
+            - [X] info <button>
+            - [X] remove <button>
+            - [X] add person <button>
+            - [X] calculate <button>
+            - [X] share <button>, including in modal
+            - [X] copy <button>
+        - [X] Mouse down
+            - [X] info <button>
+            - [X] remove <button>
+            - [X] add person <button>
+            - [X] calculate <button>
+            - [X] share <button>, including in modal
+            - [X] copy <button>
+        - [ ] Disabled (for tip fields only)
+        - [ ] Validation states
+            - [ ] Required but not filled
+            - [ ] Invalid contents (probably the same as ^)
+    - [ ] Change invalid fields bubble
+    - [ ] Venmo icon
+    - [ ] Brand color/font
+    - [ ] Redefine colors for dark mode
 -->
 
 <!DOCTYPE html>
@@ -21,11 +39,13 @@ Todo:
 </head>
 <body class="m-5">
     <script src="https://kit.fontawesome.com/33da0f5282.js" crossorigin="anonymous"></script>
-    <div class="flex justify-between items-start">
-        <h1 class="text-2xl font-medium mb-5">Divvi 2023-11-06 21:19</h1>
-        <button type="button" aria-label="info"><i class="fa-solid fa-circle-info"></i></button>
+    <div class="flex justify-between items-center">
+        <h1>Divvi 2023-11-07 12:49</h1>
+        <button type="button" aria-label="info" class="text-sky-700 active:text-sky-800 button-shadow">
+            <i class="fa-solid fa-xl fa-circle-info"></i>
+        </button>
     </div>
-    <form class="">
+    <form class="my-5">
         <!-- card -->
         <div class="bg-gray-100 rounded-md drop-shadow-md divide-y-2 divide-gray-300">
             <!-- collection of people -->
@@ -45,10 +65,10 @@ Todo:
                         type="text"
                         autocomplete="off"
                         placeholder="John Doe"
-                        class="shadow-sm rounded-md"
+                        class="field-rounded"
                         required>
                         <!-- personal subtotal field -->
-                        <div class="flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
+                        <div class="flex items-center field-wrapper">
                             <span class="select-none text-gray-500">
                                 <i class="fa-solid fa-dollar-sign"></i>
                             </span>
@@ -59,7 +79,7 @@ Todo:
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="0.00"
-                            class="w-full text-right border-0 bg-transparent focus:ring-0  ml-1 px-0"
+                            class="field-inner text-right ml-2"
                             required>
                         </div>
                     </div>
@@ -70,59 +90,16 @@ Todo:
                             Pay in whole dollars
                         </label>
                         <!-- person removal button -->
-                        <button type="button" id="remove-person-0" aria-label="Remove" class="rounded-md bg-red-600 text-white px-3 py-2">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </li>
-                <!-- all fields for one person -->
-                <li class="space-y-4 pt-5 pb-3">
-                    <div class="grid grid-cols-2 gap-y-2 gap-x-4">
-                        <label for="name-1" class="font-medium text-sm">
-                            Name
-                        </label>
-                        <label for="person-subtotal-1" class="font-medium text-sm">
-                            Personal Subtotal
-                        </label>
-                        <!-- name field -->
-                        <input
-                        id="name-1"
-                        type="text"
-                        autocomplete="off"
-                        placeholder="John Doe"
-                        class="shadow-sm rounded-md"
-                        required>
-                        <!-- personal subtotal field -->
-                        <div class="flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
-                            <span class="select-none text-gray-500">
-                                <i class="fa-solid fa-dollar-sign"></i>
-                            </span>
-                            <input
-                            id="person-subtotal-1"
-                            type="number"
-                            min="0.00" step="0.01"
-                            inputmode="decimal"
-                            autocomplete="off"
-                            placeholder="0.00"
-                            class="w-full text-right border-0 bg-transparent focus:ring-0  ml-2 px-0"
-                            required>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <!-- rounding field -->
-                        <input id="round-contrib-1" type="checkbox" class="rounded-sm">
-                        <label for="round-contrib-1" class="font-normal text-sm flex-grow">
-                            Pay in whole dollars
-                        </label>
-                        <!-- person removal button -->
-                        <button type="button" id="remove-person-1" aria-label="Remove" class="rounded-md bg-red-600 text-white px-3 py-2">
+                        <button type="button" id="remove-person-0"
+                        class="rounded-md bg-red-600 text-white px-3 py-2 button-shadow active:bg-red-700 active:text-neutral-300"
+                        aria-label="Remove">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
                 </li>
                 <!-- add person -->
                 <li class="py-5">
-                    <button type="button" id="add-person" aria-label="Add person" class="rounded-md py-2 px-5 bg-emerald-600 text-white">
+                    <button type="button" id="add-person" aria-label="Add person" class="rounded-md bg-emerald-600 text-white py-2 px-5 button-shadow active:bg-emerald-700 active:text-neutral-200">
                         <i class="fa-solid fa-user-plus"></i>
                         <span class="ml-2">Add Person</span>
                     </button>
@@ -135,7 +112,7 @@ Todo:
                         Tax
                     </label>
                     <!-- tax field -->
-                    <div class="flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
+                    <div class="flex items-center field-wrapper">
                         <span class="select-none text-gray-500">
                             <i class="fa-solid fa-dollar-sign"></i>
                         </span>
@@ -146,7 +123,7 @@ Todo:
                         inputmode="decimal"
                         autocomplete="off"
                         placeholder="0.00"
-                        class="w-full text-right border-0 bg-transparent focus:ring-0  ml-2 px-0"
+                        class="field-inner text-right ml-2"
                         required>
                     </div>
                 </div>
@@ -165,7 +142,7 @@ Todo:
                             <label for="tip-type" class="text-sm whitespace-nowrap">
                                 Tip by:
                             </label>
-                            <select name="tip-type" class="w-full rounded-md font-normal text-sm">
+                            <select name="tip-type" class="w-full rounded-md drop-shadow-sm text-sm">
                                 <option value="PreTaxPct">% of subtotal</option>
                                 <option value="PostTaxPct">% of subtotal (after tax)</option>
                                 <option value="TipDollars">Flat tip amount</option>
@@ -175,7 +152,7 @@ Todo:
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <!-- tip % field -->
-                        <div class="flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
+                        <div class="flex items-center field-wrapper">
                             <input
                             id="tip-pct"
                             type="number"
@@ -183,14 +160,14 @@ Todo:
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="20"
-                            class="w-full text-right border-0 bg-transparent focus:ring-0  mr-2 px-0"
+                            class="field-inner text-right mr-2"
                             required>
                             <span class="select-none text-gray-500">
                                 <i class="fa-solid fa-percent"></i>
                             </span>
                         </div>
                         <!-- tip $ field -->
-                        <div class="flex items-center form-input shadow-sm rounded-md py-0 focus-within:ring-1 focus-within:ring-blue-600 focus-within:border-blue-600">
+                        <div class="flex items-center field-wrapper">
                             <span class="select-none text-gray-500">
                                 <i class="fa-solid fa-dollar-sign"></i>
                             </span>
@@ -201,102 +178,116 @@ Todo:
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="0.00"
-                            class="w-full text-right border-0 bg-transparent focus:ring-0  ml-2 px-0"
+                            class="field-inner text-right ml-2"
                             required>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="p-5">
-                <button type="submit" id="calculate" class="bg-emerald-600 rounded-md py-2 px-5">
-                    <span class="text-white font-normal text-lg">Calculate</span>
+                <button type="submit" id="calculate" class="rounded-md bg-emerald-600 text-white py-2 px-6 button-shadow active:bg-emerald-700 active:text-neutral-200">
+                    <span class="font-medium text-lg">Calculate</span>
                 </button>
             </div>
         </div>
     </form>
     <div class="mt-16">
-        <h2 class="text-xl font-medium">Results</h2>
+        <h2>Results</h2>
         <!-- results card -->
-        <div class="receipt bg-gray-100 rounded-md drop-shadow-md my-5 relative">
+        <div class="bg-gray-100 rounded-md drop-shadow-md my-5 relative">
             <div class="divide-y-2 divide-gray-300">
                 <!-- summary section -->
                 <div>
-                    <h3 class="text-lg font-medium pl-5 pt-5">Bill Summary</h3>
-                    <div class="divide-y divide-gray-300 px-5">
-                        <!-- subtotal -->
-                        <div class="grid grid-cols-4 gap-x-8 py-4">
-                            <div class="col-span-2">Subtotal:</div>
-                            <div class="text-end">$38.94</div>
-                        </div>
-                        <!-- tax -->
-                        <div class="grid grid-cols-4 gap-x-8 py-4">
-                            <div class="col-span-2">Tax:</div>
-                            <div class="text-end">$2.33</div>
-                        </div>
-                        <!-- tip -->
-                        <div class="grid grid-cols-4 gap-x-8 font-semibold py-4">
-                            <div class="col-span-2">Tip:</div>
-                            <div class="text-end">$7.79</div>
-                        </div>
-                        <!-- total -->
-                        <div class="grid grid-cols-4 gap-x-8 font-semibold py-4">
-                            <div class="col-span-2">Total:</div>
-                            <div class="text-end">$49.06</div>
+                    <div class="px-5 pt-5">
+                        <h3>Bill Summary</h3>
+                        <div class="divide-y divide-gray-300">
+                            <!-- subtotal -->
+                            <div class="flex gap-x-4 items-center py-4">
+                                <div class="flex-grow">Subtotal:</div>
+                                <div>$38.94</div>
+                                <div class="w-1/5 flex-none"></div>
+                            </div>
+                            <!-- tax -->
+                            <div class="flex gap-x-4 items-center py-4">
+                                <div class="flex-grow">Tax:</div>
+                                <div>$2.33</div>
+                                <div class="w-1/5 flex-none"></div>
+                            </div>
+                            <!-- tip -->
+                            <div class="font-semibold flex gap-x-4 items-center py-4">
+                                <div class="flex-grow">Tip:</div>
+                                <div>$8.89</div>
+                                <div class="w-1/5 flex-none"></div>
+                            </div>
+                            <!-- total -->
+                            <div class="font-semibold flex gap-x-4 items-center py-4">
+                                <div class="flex-grow">Total:</div>
+                                <div>$49.06</div>
+                                <div class="w-1/5 flex-none"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- contributions section -->
                 <div>
-                    <h3 class="text-lg font-medium pl-5 pt-5">Contributions</h3>
-                    <ul class="divide-y divide-gray-300 px-5">
-                        <!-- row -->
-                        <li class="grid grid-cols-4 gap-x-8 items-center py-2">
-                            <div class="col-span-2">Anoush</div>
-                            <div class="text-end">$16.53</div>
-                            <button type="button" aria-label="Share" class="justify-self-center rounded-md border border-blue-800 text-blue-800 px-3 py-2">
-                                <i class="fa fa-share"></i>
-                            </button>
-                        </li>
-                        <!-- row -->
-                        <li class="grid grid-cols-4 gap-x-8 items-center py-2">
-                            <div class="col-span-2">Charlie</div>
-                            <div class="text-end">$16.00</div>
-                            <button type="button" aria-label="Share" class="justify-self-center rounded-md border border-blue-800 text-blue-800 px-3 py-2">
-                                <i class="fa fa-share"></i>
-                            </button>
-                        </li>
-                        <!-- row -->
-                        <li class="grid grid-cols-4 gap-x-8 items-center py-2">
-                            <div class="col-span-2">Dan</div>
-                            <div class="text-end">$126.53</div>
-                            <button type="button" aria-label="Share" class="justify-self-center rounded-md border border-blue-800 text-blue-800 px-3 py-2">
-                                <i class="fa fa-share"></i>
-                            </button>
-                        </li>
-                    </ul>
+                    <div class="px-5 pt-5">
+                        <h3>Contributions</h3>
+                        <ul class="divide-y divide-gray-300">
+                            <!-- row -->
+                            <li class="flex gap-x-4 items-center py-2">
+                                <div class="flex-grow">Anoush</div>
+                                <div>$16.53</div>
+                                <div class="w-1/5 flex-none text-right">
+                                    <button type="button" aria-label="Share" class="button-link px-3 py-2">
+                                        <i class="fa fa-share"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <!-- row -->
+                            <li class="flex gap-x-4 items-center py-2">
+                                <div class="flex-grow">Charlie</div>
+                                <div>$16.00</div>
+                                <div class="w-1/5 flex-none text-right">
+                                    <button type="button" aria-label="Share" class="button-link px-3 py-2">
+                                        <i class="fa fa-share"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <!-- row -->
+                            <li class="flex gap-x-4 items-center py-2">
+                                <div class="flex-grow">Dan</div>
+                                <div>$126.53</div>
+                                <div class="w-1/5 flex-none text-right">
+                                    <button type="button" aria-label="Share" class="button-link px-3 py-2">
+                                        <i class="fa fa-share"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- modal, to be cut and pasted into relevant context -->
     <!-- to preview, remove `hidden` attribute -->
-    <div class="relative z-10" role="dialog" aria-modal="true"  hidden>
+    <div class="relative z-10" role="dialog" aria-modal="true" hidden>
         <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity"></div>
         <div class="fixed inset-0 z-10 h-screen w-screen flex flex-col justify-center">
             <div class="transition-all px-2">
                 <div class="bg-gray-100 rounded-md drop-shadow-md py-5 px-2">
                     <div class="bg-white rounded-sm my-5 py-1 px-2 relative">
-                        <button type="button" aria-label="Copy to clipboard" class="float-right text-gray-500">
+                        <button type="button" aria-label="Copy to clipboard" class="float-right text-gray-500 drop-shadow-small hover:drop-shadow active:drop-shadow-none active:text-gray-600">
                             <i class="fa-regular fa-lg fa-copy"></i>
                         </button>
                         <p class="font-mono">Dan owes $16.53 for the shared meal on 10/27/2023.</p>
                     </div>
                     <div class="flex justify-center gap-4">
-                        <button type="button" aria-label="Venmo" class="rounded-md border border-blue-800 text-blue-800 px-3 py-2">
+                        <button type="button" aria-label="Venmo" class="button-link px-3 py-2">
                             <i class="fa-solid fa-dollar-sign"></i>
                             <span class="ml-2">Request with Venmo</span>
                         </button>
-                        <button type="button" aria-label="More" class="rounded-md border border-blue-800 text-blue-800 px-3 py-2">
+                        <button type="button" aria-label="More" class="button-link px-3 py-2">
                             <i class="fa-solid fa-share-from-square"></i>
                             <span class="ml-2">More...</span>
                         </button>
