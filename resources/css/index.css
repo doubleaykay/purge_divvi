@@ -7,6 +7,7 @@
         font-size: 17px;
         font-family: 'Inter', sans-serif;
         -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
     h1 {
         @apply text-2xl font-medium;
@@ -56,7 +57,3 @@
         @apply drop-shadow-none;
     }
 }
-
-#element {
-    touch-action: manipulation;
-  }
