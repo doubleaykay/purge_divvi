@@ -22,7 +22,7 @@ Todo:
             - [ ] Required but not filled
             - [ ] Invalid contents (probably the same as ^)
     - [ ] Change invalid fields bubble (?)
-    - [ ] Make interface text unselectable
+    - [X] Make interface text unselectable
     - [ ] Venmo icon
     - [ ] Brand color/font
     - [ ] Redefine colors for dark mode
@@ -38,10 +38,10 @@ Todo:
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="m-5">
+<body class="m-5 select-none">
     <script src="https://kit.fontawesome.com/33da0f5282.js" crossorigin="anonymous"></script>
     <div class="flex justify-between items-center">
-        <h1>Divvi 2023-11-07 21:58</h1>
+        <h1>Divvi 2023-11-07 22:05</h1>
         <button type="button" aria-label="info" class="text-sky-700 active:text-sky-800 button-shadow">
             <i class="fa-solid fa-xl fa-circle-info"></i>
         </button>
@@ -281,7 +281,7 @@ Todo:
                         <button type="button" aria-label="Copy to clipboard" class="float-right text-gray-500 drop-shadow-small hover:drop-shadow active:drop-shadow-none active:text-gray-600">
                             <i class="fa-regular fa-lg fa-copy"></i>
                         </button>
-                        <p class="font-mono">Dan owes $16.53 for the shared meal on 10/27/2023.</p>
+                        <p class="font-mono select-all">Dan owes $16.53 for the shared meal on 10/27/2023.</p>
                     </div>
                     <div class="flex justify-center gap-4">
                         <button type="button" aria-label="Venmo" class="button-link px-3 py-2">
