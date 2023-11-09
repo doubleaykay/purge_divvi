@@ -18,14 +18,17 @@ Todo:
             - [X] share <button>, including in modal
             - [X] copy <button>
         - [ ] Disabled (for tip fields only)
-        - [ ] Validation states
-            - [ ] Required but not filled
-            - [ ] Invalid contents (probably the same as ^)
+        - [X] Validation states
     - [ ] Change invalid fields bubble (?)
     - [X] Make interface text unselectable
     - [ ] Venmo icon
     - [ ] Brand color/font
     - [ ] Redefine colors for dark mode
+
+Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
+    - [ ] Apply class `validate field` to text/number fields when needed
+        - [ ] Enable validation for each field on its first activation
+        - [ ] Enable validation everywhere on submit (Calculate) button pressed
 -->
 
 <!DOCTYPE html><head>
@@ -41,7 +44,7 @@ Todo:
 <body class="m-5 select-none">
     <script src="https://kit.fontawesome.com/33da0f5282.js" crossorigin="anonymous"></script>
     <div class="flex justify-between items-center">
-        <h1>Divvi 2023-11-07 22:05</h1>
+        <h1>Divvi 2023-11-08 20:59</h1>
         <button type="button" aria-label="info" class="text-sky-700 active:text-sky-800 button-shadow">
             <i class="fa-solid fa-xl fa-circle-info"></i>
         </button>
@@ -69,8 +72,8 @@ Todo:
                         class="field-rounded"
                         required>
                         <!-- personal subtotal field -->
-                        <div class="flex items-center field-wrapper">
-                            <span class="select-none text-gray-500">
+                        <div class="icon-field-wrapper">
+                            <span class="field-icon left-0">
                                 <i class="fa-solid fa-dollar-sign"></i>
                             </span>
                             <input
@@ -80,7 +83,7 @@ Todo:
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="0.00"
-                            class="field-inner text-right ml-2"
+                            class="field-rounded text-right pl-8 w-full"
                             required>
                         </div>
                     </div>
@@ -113,8 +116,8 @@ Todo:
                         Tax
                     </label>
                     <!-- tax field -->
-                    <div class="flex items-center field-wrapper">
-                        <span class="select-none text-gray-500">
+                    <div class="icon-field-wrapper">
+                        <span class="field-icon left-0">
                             <i class="fa-solid fa-dollar-sign"></i>
                         </span>
                         <input
@@ -124,7 +127,7 @@ Todo:
                         inputmode="decimal"
                         autocomplete="off"
                         placeholder="0.00"
-                        class="field-inner text-right ml-2"
+                        class="field-rounded text-right pl-8 w-full"
                         required>
                     </div>
                 </div>
@@ -153,7 +156,10 @@ Todo:
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <!-- tip % field -->
-                        <div class="flex items-center field-wrapper">
+                        <div class="icon-field-wrapper">
+                            <span class="field-icon right-0">
+                                <i class="fa-solid fa-percent"></i>
+                            </span>
                             <input
                             id="tip-pct"
                             type="number"
@@ -161,15 +167,12 @@ Todo:
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="20"
-                            class="field-inner text-right mr-2"
+                            class="field-rounded text-right pr-8 w-full"
                             required>
-                            <span class="select-none text-gray-500">
-                                <i class="fa-solid fa-percent"></i>
-                            </span>
                         </div>
                         <!-- tip $ field -->
-                        <div class="flex items-center field-wrapper">
-                            <span class="select-none text-gray-500">
+                        <div class="icon-field-wrapper">
+                            <span class="field-icon left-0">
                                 <i class="fa-solid fa-dollar-sign"></i>
                             </span>
                             <input
@@ -179,7 +182,7 @@ Todo:
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="0.00"
-                            class="field-inner text-right ml-2"
+                            class="field-rounded text-right pl-8 w-full"
                             required>
                         </div>
                     </div>
