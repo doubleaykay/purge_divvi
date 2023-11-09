@@ -1,8 +1,14 @@
 <!-- 
 Todo:
     - [ ] Responsive design for better tablet/desktop experience
+    - [ ] Change invalid fields bubble (?)
+    - [ ] Bundle icons
+    - [ ] Venmo icon
+    - [ ] Brand color/font
+    - [ ] Redefine colors for dark mode
+    - [X] Make interface text unselectable
     - [X] Extract repeated styles for fields
-    - [ ] State styling
+    - [X] State styling
         - [X] Hover
             - [X] info <button>
             - [X] remove <button>
@@ -17,18 +23,15 @@ Todo:
             - [X] calculate <button>
             - [X] share <button>, including in modal
             - [X] copy <button>
-        - [ ] Disabled (for tip fields only)
+        - [X] Disabled (for tip fields only)
         - [X] Validation states
-    - [ ] Change invalid fields bubble (?)
-    - [X] Make interface text unselectable
-    - [ ] Venmo icon
-    - [ ] Brand color/font
-    - [ ] Redefine colors for dark mode
 
 Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
-    - [ ] Apply class `validate field` to text/number fields when needed
+    - [ ] Apply attribute `data-validate` to text/number fields when needed
         - [ ] Enable validation for each field on its first activation
         - [ ] Enable validation everywhere on submit (Calculate) button pressed
+    - [ ] Disable appropriate tip field based on tip-by field
+    - [ ] Format numbers in currency fields to show two decimal places and no leading 0's
 -->
 
 <!DOCTYPE html><head>
@@ -44,7 +47,7 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
 <body class="m-5 select-none">
     <script src="https://kit.fontawesome.com/33da0f5282.js" crossorigin="anonymous"></script>
     <div class="flex justify-between items-center">
-        <h1>Divvi 2023-11-08 20:59</h1>
+        <h1>Divvi 2023-11-09 11:12</h1>
         <button type="button" aria-label="info" class="text-sky-700 active:text-sky-800 button-shadow">
             <i class="fa-solid fa-xl fa-circle-info"></i>
         </button>
@@ -73,9 +76,6 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                         required>
                         <!-- personal subtotal field -->
                         <div class="icon-field-wrapper">
-                            <span class="field-icon left-0">
-                                <i class="fa-solid fa-dollar-sign"></i>
-                            </span>
                             <input
                             id="person-subtotal-0"
                             type="number"
@@ -83,8 +83,12 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="0.00"
-                            class="field-rounded text-right pl-8 w-full"
-                            required>
+                            class="peer field-rounded text-right pl-8 w-full"
+                            required
+                            data-validate>
+                            <span class="field-icon left-0">
+                                <i class="fa-solid fa-dollar-sign"></i>
+                            </span>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -117,9 +121,6 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                     </label>
                     <!-- tax field -->
                     <div class="icon-field-wrapper">
-                        <span class="field-icon left-0">
-                            <i class="fa-solid fa-dollar-sign"></i>
-                        </span>
                         <input
                         id="tax"
                         type="number"
@@ -127,15 +128,16 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                         inputmode="decimal"
                         autocomplete="off"
                         placeholder="0.00"
-                        class="field-rounded text-right pl-8 w-full"
+                        class="peer field-rounded text-right pl-8 w-full"
                         required>
+                        <span class="field-icon left-0">
+                            <i class="fa-solid fa-dollar-sign"></i>
+                        </span>
                     </div>
                 </div>
                 <!-- tip fields -->
-                <!-- Showing fields for both options ($ or %) right now. Could hide one
-                as needed, preserving the distinction that the back end currently uses
-                in its data model. Similarly, could disable it but leave it visible. -->
-                <!-- If both present, should not mark both as required! -->
+                <!-- tip-dollars is currently disabled as a sample. In prod, disable
+                it or tip-pct, whichever one mismatches the tip-by field -->
                 <div class="space-y-2">
                     <div>
                         <label class="font-medium text-sm">
@@ -157,9 +159,6 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                     <div class="grid grid-cols-2 gap-4">
                         <!-- tip % field -->
                         <div class="icon-field-wrapper">
-                            <span class="field-icon right-0">
-                                <i class="fa-solid fa-percent"></i>
-                            </span>
                             <input
                             id="tip-pct"
                             type="number"
@@ -167,14 +166,14 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="20"
-                            class="field-rounded text-right pr-8 w-full"
+                            class="peer field-rounded text-right pr-8 w-full"
                             required>
+                            <span class="field-icon right-0">
+                                <i class="fa-solid fa-percent"></i>
+                            </span>
                         </div>
                         <!-- tip $ field -->
                         <div class="icon-field-wrapper">
-                            <span class="field-icon left-0">
-                                <i class="fa-solid fa-dollar-sign"></i>
-                            </span>
                             <input
                             id="tip-dollars"
                             type="number"
@@ -182,8 +181,12 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                             inputmode="decimal"
                             autocomplete="off"
                             placeholder="0.00"
-                            class="field-rounded text-right pl-8 w-full"
-                            required>
+                            class="peer field-rounded text-right pl-8 w-full"
+                            required
+                            disabled>
+                            <span class="field-icon left-0">
+                                <i class="fa-solid fa-dollar-sign"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -273,11 +276,13 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
             </div>
         </div>
     </div>
-    <!-- modal, to be cut and pasted into relevant context -->
-    <!-- to preview, remove `hidden` attribute -->
-    <div class="relative z-10" role="dialog" aria-modal="true" hidden>
-        <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity"></div>
-        <div class="fixed inset-0 z-10 h-screen w-screen flex flex-col justify-center">
+    <!-- modal -->
+    <!-- to preview, add attribute 'open' -->
+    <!-- in prod, show using JS `showModal()` https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal -->
+    <!-- in preview, elements behind are still interactable. Using JS `showModal()` should fix that behavior -->
+    <dialog class="relative z-10" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-zinc-800 bg-opacity-75 transition-opacity"></div>
+        <div class="fixed inset-0 h-screen w-screen flex flex-col justify-center">
             <div class="transition-all px-2">
                 <div class="bg-gray-100 rounded-md drop-shadow-md py-5 px-2">
                     <div class="bg-white rounded-sm my-5 py-1 px-2 relative">
@@ -299,5 +304,5 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                 </div>
             </div>
         </div>
-    </div>
+    </dialog>
 </body>
