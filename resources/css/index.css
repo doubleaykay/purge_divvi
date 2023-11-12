@@ -1,3 +1,4 @@
+@import url(../fontawesome/css/fa.css);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +18,9 @@
     }
     h3 {
         @apply text-lg font-medium;
+    }
+    button {
+        @apply touch-manipulation;
     }
 }
 

@@ -2,10 +2,10 @@
 Todo:
     - [ ] Responsive design for better tablet/desktop experience
     - [ ] Change invalid fields bubble (?)
-    - [ ] Bundle icons
-    - [ ] Venmo icon
     - [ ] Brand color/font
     - [ ] Redefine colors for dark mode
+    - [X] Bundle icons
+    - [X] Venmo icon
     - [X] Make interface text unselectable
     - [X] Extract repeated styles for fields
     - [X] State styling
@@ -45,11 +45,11 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body class="m-5 select-none touch-manipulation">
-    <script src="https://kit.fontawesome.com/33da0f5282.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/33da0f5282.js" crossorigin="anonymous"></script> -->
     <div class="flex justify-between items-center">
-        <h1>Divvi 2023-11-09 11:22</h1>
+        <h1>Divvi 2023-11-12 17:11</h1>
         <button type="button" aria-label="info" class="text-sky-700 active:text-sky-800 button-shadow">
-            <i class="fa-solid fa-xl fa-circle-info"></i>
+            <i class="fa fa-xl fa-circle-info"></i>
         </button>
     </div>
     <form class="my-5">
@@ -87,7 +87,7 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                             required
                             data-validate>
                             <span class="field-icon left-0">
-                                <i class="fa-solid fa-dollar-sign"></i>
+                                <i class="fa fa-dollar-sign"></i>
                             </span>
                         </div>
                     </div>
@@ -101,14 +101,14 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                         <button type="button" id="remove-person-0"
                         class="rounded-md bg-red-600 text-white px-3 py-2 button-shadow active:bg-red-700 active:text-neutral-300"
                         aria-label="Remove">
-                            <i class="fa-solid fa-trash"></i>
+                            <i class="fa fa-trash"></i>
                         </button>
                     </div>
                 </li>
                 <!-- add person -->
                 <li class="py-5">
                     <button type="button" id="add-person" aria-label="Add person" class="rounded-md bg-emerald-600 text-white py-2 px-5 button-shadow active:bg-emerald-700 active:text-neutral-200">
-                        <i class="fa-solid fa-user-plus"></i>
+                        <i class="fa fa-user-plus"></i>
                         <span class="ml-2">Add Person</span>
                     </button>
                 </li>
@@ -131,7 +131,7 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                         class="peer field-rounded text-right pl-8 w-full"
                         required>
                         <span class="field-icon left-0">
-                            <i class="fa-solid fa-dollar-sign"></i>
+                            <i class="fa fa-dollar-sign"></i>
                         </span>
                     </div>
                 </div>
@@ -169,7 +169,7 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                             class="peer field-rounded text-right pr-8 w-full"
                             required>
                             <span class="field-icon right-0">
-                                <i class="fa-solid fa-percent"></i>
+                                <i class="fa fa-percent"></i>
                             </span>
                         </div>
                         <!-- tip $ field -->
@@ -185,7 +185,7 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
                             required
                             disabled>
                             <span class="field-icon left-0">
-                                <i class="fa-solid fa-dollar-sign"></i>
+                                <i class="fa fa-dollar-sign"></i>
                             </span>
                         </div>
                     </div>
@@ -280,24 +280,24 @@ Work for Anoush (things Dan would have done if it were possible in HTML/CSS):
     <!-- to preview, add attribute 'open' -->
     <!-- in prod, show using JS `showModal()` https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal -->
     <!-- in preview, elements behind are still interactable. Using JS `showModal()` should fix that behavior -->
-    <dialog class="relative z-10" role="dialog" aria-modal="true">
+    <dialog class="relative z-10" role="dialog" aria-modal>
         <div class="fixed inset-0 bg-zinc-800 bg-opacity-75 transition-opacity"></div>
         <div class="fixed inset-0 h-screen w-screen flex flex-col justify-center">
             <div class="transition-all px-2">
                 <div class="bg-gray-100 rounded-md drop-shadow-md py-5 px-2">
                     <div class="bg-white rounded-sm my-5 py-1 px-2 relative">
                         <button type="button" aria-label="Copy to clipboard" class="float-right text-gray-500 drop-shadow-small hover:drop-shadow active:drop-shadow-none active:text-gray-600">
-                            <i class="fa-regular fa-lg fa-copy"></i>
+                            <i class="fa fa-lg fa-copy"></i>
                         </button>
                         <p class="font-mono select-all">Dan owes $16.53 for the shared meal on 10/27/2023.</p>
                     </div>
                     <div class="flex justify-center gap-4">
                         <button type="button" aria-label="Venmo" class="button-link px-3 py-2">
-                            <i class="fa-solid fa-dollar-sign"></i>
+                            <i class="fa fa-venmo"></i>
                             <span class="ml-2">Request with Venmo</span>
                         </button>
                         <button type="button" aria-label="More" class="button-link px-3 py-2">
-                            <i class="fa-solid fa-share-from-square"></i>
+                            <i class="fa fa-share-from-square"></i>
                             <span class="ml-2">More...</span>
                         </button>
                     </div>
