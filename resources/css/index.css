@@ -19,9 +19,6 @@
     h3 {
         @apply text-lg font-medium;
     }
-    button {
-        @apply touch-manipulation;
-    }
 }
 
 @layer components {
